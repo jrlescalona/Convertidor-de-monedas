@@ -7,59 +7,42 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('https://forextradingbonus.com/wp-content/img/2019/03/1-1.jpeg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
             text-align: center;
             padding: 20px;
-            color: white; /* Cambiamos el color de todo el texto a blanco */
+            color: white; /* Color de texto blanco por defecto */
+            transition: background-color 0.3s ease; /* Transición suave para el cambio de color de fondo */
+        }
+
+        /* Estilos para fondos de colores */
+        .bg-blue {
+            background-color: #007bff; /* Azul */
+        }
+
+        .bg-green {
+            background-color: #28a745; /* Verde */
+        }
+
+        .bg-red {
+            background-color: #dc3545; /* Rojo */
+        }
+
+        .bg-purple {
+            background-color: #6f42c1; /* Púrpura */
         }
 
         h1 {
-            color: white; /* Cambiamos el color del título a blanco */
-        }
-
-        form {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            margin: 0 auto;
-            color: black; /* Cambiamos el color del texto dentro del formulario a negro */
-        }
-
-        input, select, button {
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 100%;
-            color: black; /* Cambiamos el color del texto en los campos de entrada, select y botón a negro */
-            background-color: white; /* Añadimos un fondo blanco para asegurar que el texto sea visible */
+            margin-top: 50px; /* Margen superior adicional para separar del botón */
         }
 
         button {
-            background-color: #4CAF50;
-            color: white; /* Mantenemos el color del texto del botón blanco */
-            border: none;
+            margin-top: 20px; /* Margen superior para separar del formulario */
+            padding: 10px 20px;
+            font-size: 16px;
             cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        #result {
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
-            color: white; /* Cambiamos el color del texto del resultado a blanco */
         }
     </style>
 </head>
-<body>
+<body class="bg-blue"> <!-- Fondo azul por defecto -->
     <h1>Conversor de Monedas</h1>
     <form id="currencyConverter">
         <label for="amount">Cantidad:</label>
@@ -78,10 +61,17 @@
             <option value="GBP">GBP</option>
             <option value="MXN">MXN</option> 
         </select>
-        <button type="button" onclick="convertCurrency()">Convertir</button>
+        <button type="button" onclick="changeBackground('blue')">Fondo Azul</button>
+        <button type="button" onclick="changeBackground('green')">Fondo Verde</button>
+        <button type="button" onclick="changeBackground('red')">Fondo Rojo</button>
+        <button type="button" onclick="changeBackground('purple')">Fondo Púrpura</button>
     </form>
-    <div id="result"></div>
 
-    <script src="conv.js"></script>
+    <script>
+        function changeBackground(color) {
+            document.body.className = ""; // Limpiar cualquier clase existente en el body
+            document.body.classList.add('bg-' + color); // Agregar la clase correspondiente al color de fondo
+        }
+    </script>
 </body>
 </html>
