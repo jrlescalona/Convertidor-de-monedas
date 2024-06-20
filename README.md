@@ -40,10 +40,12 @@ El Convertidor de Monedas es una aplicación web diseñada para permitir a los u
    git clone https://github.com/tu_usuario/convertidor-de-monedas.git
 
 2. Navega al directorio del proyecto:
+   ```bash
    cd convertidor-de-monedas
    
 3. Instala las dependencias del proyecto:
-   npm install
+   ```bash
+    npm install
 
 Uso
 --Selecciona la moneda de origen y destino.
