@@ -48,9 +48,9 @@ El Convertidor de Monedas es una aplicación web diseñada para permitir a los u
     npm install
 
 Uso
---**Selecciona la moneda de origen y destino.
---**Introduce el monto que deseas convertir.
---**Haz clic en el botón de convertir para obtener el monto convertido y las tasas de cambio actuales.
---**Consulta el historial de conversiones si necesitas revisar conversiones anteriores.   
+- **Selecciona la moneda de origen y destino.
+- **Introduce el monto que deseas convertir.
+- **Haz clic en el botón de convertir para obtener el monto convertido y las tasas de cambio actuales.
+- **Consulta el historial de conversiones si necesitas revisar conversiones anteriores.   
 
    
