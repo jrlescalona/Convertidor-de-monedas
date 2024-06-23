@@ -40,11 +40,17 @@
             font-size: 16px;
             cursor: pointer;
         }
+
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body class="bg-blue"> <!-- Fondo azul por defecto -->
     <h1>Conversor de Monedas</h1>
-    <form id="currencyConverter">
+    <form id="currencyConverter" onsubmit="return false;">
         <label for="amount">Cantidad:</label>
         <input type="number" id="amount" placeholder="Ingrese la cantidad" step="0.01">
         <label for="fromCurrency">De:</label>
@@ -61,16 +67,41 @@
             <option value="GBP">GBP</option>
             <option value="MXN">MXN</option> 
         </select>
-        <button type="button" onclick="changeBackground('blue')">Fondo Azul</button>
-        <button type="button" onclick="changeBackground('green')">Fondo Verde</button>
-        <button type="button" onclick="changeBackground('red')">Fondo Rojo</button>
-        <button type="button" onclick="changeBackground('purple')">Fondo Púrpura</button>
+        <button type="button" onclick="convertCurrency()">Convertir</button>
+        <div class="result" id="result"></div>
     </form>
+
+    <button type="button" onclick="changeBackground('blue')">Fondo Azul</button>
+    <button type="button" onclick="changeBackground('green')">Fondo Verde</button>
+    <button type="button" onclick="changeBackground('red')">Fondo Rojo</button>
+    <button type="button" onclick="changeBackground('purple')">Fondo Púrpura</button>
 
     <script>
         function changeBackground(color) {
             document.body.className = ""; // Limpiar cualquier clase existente en el body
             document.body.classList.add('bg-' + color); // Agregar la clase correspondiente al color de fondo
+        }
+
+        function convertCurrency() {
+            var amount = document.getElementById("amount").value;
+            var fromCurrency = document.getElementById("fromCurrency").value;
+            var toCurrency = document.getElementById("toCurrency").value;
+
+            // Tasas de cambio fijas (deben ser actualizadas regularmente)
+            var exchangeRates = {
+                "USD": {"EUR": 0.85, "GBP": 0.75, "MXN": 20.0},
+                "EUR": {"USD": 1.18, "GBP": 0.88, "MXN": 23.5},
+                "GBP": {"USD": 1.33, "EUR": 1.14, "MXN": 26.7},
+                "MXN": {"USD": 0.05, "EUR": 0.043, "GBP": 0.037}
+            };
+
+            if (fromCurrency === toCurrency) {
+                document.getElementById("result").innerText = "Seleccione diferentes monedas.";
+                return;
+            }
+
+            var convertedAmount = amount * exchangeRates[fromCurrency][toCurrency];
+            document.getElementById("result").innerText = amount + " " + fromCurrency + " = " + convertedAmount.toFixed(2) + " " + toCurrency;
         }
     </script>
 </body>
